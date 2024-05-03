@@ -24,3 +24,5 @@ Route::get('/test-slots/{interval}', [PageController::class, 'test']);
 Route::get('/services', [PageController::class, 'services'])->name('pages.services');
 Route::get('/staff', [PageController::class, 'staff'])->name('pages.staff');
 Route::get('/schedule', [PageController::class, 'schedule'])->name('pages.schedule');
+
+Route::get('/process-leave', 'LeaveController@processLeave');

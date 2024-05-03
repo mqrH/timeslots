@@ -7,6 +7,7 @@ use App\Models\Worker;
 use DateTime;
 use Illuminate\Http\Request;
 use App\Services\TimeSlotService;
+use App\Models\LeaveProcessor;
 
 class PageController extends Controller
 {
@@ -50,6 +51,7 @@ class PageController extends Controller
     }
 
 
+
     public function schedule()
     {
         $timeSlots = [
@@ -66,6 +68,17 @@ class PageController extends Controller
         ];
 
         return view('pages.schedules')->with('slots', $timeSlots);
+    }
+}
+
+class LeaveController extends Controller {
+
+    public function processLeave() {
+        $startDate = '2024-05-03'; // Start date
+        $duration = 5; // Leave duration in days
+
+        $result = LeaveProcessor::processLeave($startDate, $duration);
+        return response()->json($result);
     }
 }
 
